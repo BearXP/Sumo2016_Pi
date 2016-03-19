@@ -8,6 +8,8 @@
     Environment Variables
       Path
 	Append: ;C:\Python32
+      Path
+        Create python, C:\Python32\python.exe (Anaconda)
 #==========================================================#
 
 
@@ -53,8 +55,14 @@
         Git.
         Restart SublimeText3  
   # GitGutter
-        shows little icons in ST3’s gutter area that indicate whether a line has been inserted, modified, or deleted since the last commit.
+        shows little icons in ST3’s gutter area that
+        indicate whether a line has been inserted,
+        modified, or deleted since the last commit.
+  # Anaconda
+        Autocomplete, linter, etc.
+        %APP_DATA%\Roaming\Sublime Text 3\Packages\Anaconda\Ana..sublime-settings
+	    Line 276 - None
   # Setup to run python code.
       Tools > Build System > Python
-      Go to C:\
+      ^+b
 #==========================================================#
