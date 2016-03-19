@@ -43,8 +43,8 @@ Close = 10
 # * Private variables
 #---------------------------------------------------
 _joystickThreshold = 0.5                    # abs(joystick) direction must be above x before engaging
-_holdCount = [None]*100                     # How long a button has been held down
-_buttonPressed = [None]* 100                # Whether a button has been pressed
+_holdCount = [0]*100                     # How long a button has been held down
+_buttonPressed = [0]* 100                # Whether a button has been pressed
 pygame.joystick.init()                      # Initialize the joystick library
 _joystickCount = pygame.joystick.get_count()# Count the number of joysticks attached
 

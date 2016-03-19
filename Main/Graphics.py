@@ -26,23 +26,27 @@ WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
+clock = None
+screen = None
 
 #---------------------------------------------------
 # * Object Initialization
 #---------------------------------------------------
-def init(width, height, fullscreen = false):
+def init(width, height, fullscreen = False):
+    global screen, clock
     pygame.init()
+    size = (width, height)
     if fullscreen:
         screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
     else:
-        screen = pygame.display.set_mode(width, height)
+        screen = pygame.display.set_mode(size)
     pygame.display.set_caption("Sumobot")
     clock = pygame.time.Clock()
 
 #---------------------------------------------------
 # * Frame Update
 #---------------------------------------------------  
-def update
+def update():
     # Go ahead and update the screen with what we've drawn.
     # This MUST happen after all the other drawing commands.
     pygame.display.flip()
