@@ -3,7 +3,7 @@
 #--------------------------------------------------------
 # HISTORY:
 #    Created By:   Mark Evans
-#    Date Created: 15/Mar/2016
+#    Date Created: 19/Mar/2016
 # DESCRIPTION:
 #    Handles external interfaces, expecting joystick,
 #     keyboard, and the screen (close button).
@@ -21,8 +21,14 @@
 #        If( Input.Trigger( Input.Up) ):
 #=========================================================
 
+#---------------------------------------------------
+# * Libraries
+#---------------------------------------------------
 import pygame
 
+#---------------------------------------------------
+# * Public Constants
+#---------------------------------------------------
 Up = 1
 Down = 2
 Left = 3
@@ -33,17 +39,24 @@ C = 7
 Start = 8
 Close = 10
 
-_joystickThreshold = 0.5 # abs(joystick) direction must be above x before engaging
-_holdCount = [None]*100
-_buttonPressed = [None]* 100
-pygame.joystick.init()
-_joystickCount = pygame.joystick.get_count()
+#---------------------------------------------------
+# * Private variables
+#---------------------------------------------------
+_joystickThreshold = 0.5                    # abs(joystick) direction must be above x before engaging
+_holdCount = [None]*100                     # How long a button has been held down
+_buttonPressed = [None]* 100                # Whether a button has been pressed
+pygame.joystick.init()                      # Initialize the joystick library
+_joystickCount = pygame.joystick.get_count()# Count the number of joysticks attached
 
+#---------------------------------------------------
+# * Object Initialization
+#---------------------------------------------------
 def init():
     pygame.mouse.set_visible( False )
-    
-    
-    
+
+#---------------------------------------------------
+# * Frame Update
+#---------------------------------------------------  
 def update():
     # Clear whether the button was pressed
     for i in range(100):
@@ -79,31 +92,28 @@ def update():
         joystick.init()
         axes = joystick.get_numaxes()
         if( axes >= 1 ):
-            # Up engaged
             if( joystick.get_axis(0) >= _joystickThreshold ):
-                _holdCount[Up] += 1
-            else:
-                _holdCount[Up] = 0
-            # Down engaged
+                _buttonPressed[Up] = 1
             if( -joystick.get_axis(0) >= _joystickThreshold ):
-                _holdCount[Down] += 1
-            else:
-                _holdCount[Down] = 0
-            # Left engaged
+                _buttonPressed[Down] = 1
             if( -joystick.get_axis(1) >= _joystickThreshold ):
-                _holdCount[Left] += 1
-            else:
-                _holdCount[Left] = 0
-            # Right engaged
+                _buttonPressed[Left] = 1
             if( joystick.get_axis(1) >= _joystickThreshold ):
-                _holdCount[Right] += 1
-            else:
-                _holdCount[Right] = 0
-                
+                _buttonPressed[Right] = 1
+    # Increment _holdCount if the button has been pressed
+    for i in range(100):
+        _holdCount[i] = _holdCount[i] * _buttonPressed[i] + _buttonPressed[i]
+
+#---------------------------------------------------
+# * Button Triggered
+#---------------------------------------------------
 def Trigger(direction):
     return _holdCount[direction] == 1
-    
+
+#---------------------------------------------------
+# * Button Held
+#---------------------------------------------------
 def Hold(direction):
-    return _holdCount[direction] == 1
-                
+    return _holdCount[direction] > 0
+
     
