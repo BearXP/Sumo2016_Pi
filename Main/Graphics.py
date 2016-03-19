@@ -30,10 +30,12 @@ BLUE = (0, 0, 255)
 #---------------------------------------------------
 # * Object Initialization
 #---------------------------------------------------
-def init(width, height):
+def init(width, height, fullscreen = false):
     pygame.init()
-    #screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
-    screen = pygame.display.set_mode(width, height)
+    if fullscreen:
+        screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
+    else:
+        screen = pygame.display.set_mode(width, height)
     pygame.display.set_caption("Sumobot")
     clock = pygame.time.Clock()
 
