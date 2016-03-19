@@ -21,9 +21,8 @@ while not done:
     # inside the main while not done loop.
  
     # Clear the screen and set the screen background
-    screen.fill(WHITE)
+    screen.fill(BLACK)
     Graphics.update()
-
 
 # Close window and exit
 pygame.quit()

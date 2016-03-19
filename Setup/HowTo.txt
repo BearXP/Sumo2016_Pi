@@ -37,3 +37,24 @@
 #----------------------------------------------------------#
   Comes with python.
 #==========================================================#
+
+
+#==========================================================#
+# ** How to Setup Sublime Text
+#----------------------------------------------------------#
+#  * Windows
+#----------------------------------------------------------#
+  Install Sublime text 3
+  # Install Package Control
+	https://packagecontrol.io/installation#st3
+  # Install Git
+      Control Shift P
+	Install
+        Git.
+        Restart SublimeText3  
+  # GitGutter
+        shows little icons in ST3’s gutter area that indicate whether a line has been inserted, modified, or deleted since the last commit.
+  # Setup to run python code.
+      Tools > Build System > Python
+      Go to C:\
+#==========================================================#
