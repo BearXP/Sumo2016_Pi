@@ -1,0 +1,93 @@
+
+#==========================================================#
+# ** How to Install Python 3.5.1
+#----------------------------------------------------------#
+#  * Windows
+#----------------------------------------------------------#
+  Run installer
+  System Properties
+    Environment Variables
+      Path
+	Append: ;C:\Users\presi\AppData\Local\Programs\Python\Python35-32
+      Path
+        Create python, C:\Python32\python.exe (Anaconda)
+#==========================================================#
+
+
+#==========================================================#
+# ** How to Find WHL files
+#----------------------------------------------------------#
+  http://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame
+#==========================================================#
+
+
+#==========================================================#
+# ** How to Install PySerial:
+#----------------------------------------------------------#
+#  * Windows
+#----------------------------------------------------------#
+  Open CMD to 002. Python 3.5 folder
+  run 'pip3 install pyserial-3.0.1-py2.py3-none-any.whl'
+#----------------------------------------------------------#
+#  * Raspbery Pi
+#----------------------------------------------------------#
+  sudo apt-get install python-serial
+#==========================================================#
+
+
+#==========================================================#
+# ** How to Install PyGame:
+#----------------------------------------------------------#
+#  * Windows
+#----------------------------------------------------------#
+  Open CMD to 002. Python 3.5 folder
+  run 'pip3 install pygame-1.9.2a0-cp35-none-win32.whl'
+  In IDLE run
+    import pygame.examples.aliens as game
+    game.main()
+#----------------------------------------------------------#
+#  * Raspbery Pi
+#----------------------------------------------------------#
+  Comes with python.
+#==========================================================#
+
+
+#==========================================================#
+# ** How to Install NumPy
+#----------------------------------------------------------#
+#  * Windows
+#----------------------------------------------------------#
+  Open CMD to 002. Python 3.5 folder
+  run 'pip3 install numpy-1.10.4+vanilla-cp35-none-win32.whl'
+#----------------------------------------------------------#
+#  * Raspbery Pi
+#----------------------------------------------------------#
+  ??
+#==========================================================#
+
+
+#==========================================================#
+# ** How to Setup Sublime Text
+#----------------------------------------------------------#
+#  * Windows
+#----------------------------------------------------------#
+  Install Sublime text 3
+  # Install Package Control
+	https://packagecontrol.io/installation#st3
+  # Install Git
+      Control Shift P
+	Install
+        Git.
+        Restart SublimeText3  
+  # GitGutter
+        shows little icons in ST3’s gutter area that
+        indicate whether a line has been inserted,
+        modified, or deleted since the last commit.
+  # Anaconda
+        Autocomplete, linter, etc.
+        %APP_DATA%\Roaming\Sublime Text 3\Packages\Anaconda\Ana..sublime-settings
+	    Line 276 - None
+  # Setup to run python code.
+      Tools > Build System > Python
+      ^+b
+#==========================================================#

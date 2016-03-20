@@ -1,0 +1,68 @@
+
+#==========================================================#
+# ** How to Install Python 3.2.2
+#----------------------------------------------------------#
+#  * Windows
+#----------------------------------------------------------#
+  System Properties
+    Environment Variables
+      Path
+	Append: ;C:\Python32
+      Path
+        Create python, C:\Python32\python.exe (Anaconda)
+#==========================================================#
+
+
+#==========================================================#
+# ** How to Install PySerial:
+#----------------------------------------------------------#
+#  * Windows
+#----------------------------------------------------------#
+  Copy pyserial-2.7 to C:\Python32\Lib\site-packages\pyserial-2.7
+  Open CMD and CD to C:\Python32\Lib\site-packages\pyserial-2.7
+  run 'python setup.py install'
+#----------------------------------------------------------#
+#  * Raspbery Pi
+#----------------------------------------------------------#
+  sudo apt-get install python-serial
+#==========================================================#
+
+
+#==========================================================#
+# ** How to Install PyGame:
+#----------------------------------------------------------#
+#  * Windows
+#----------------------------------------------------------#
+  Run installer. It's actually quite simple
+#----------------------------------------------------------#
+#  * Raspbery Pi
+#----------------------------------------------------------#
+  Comes with python.
+#==========================================================#
+
+
+#==========================================================#
+# ** How to Setup Sublime Text
+#----------------------------------------------------------#
+#  * Windows
+#----------------------------------------------------------#
+  Install Sublime text 3
+  # Install Package Control
+	https://packagecontrol.io/installation#st3
+  # Install Git
+      Control Shift P
+	Install
+        Git.
+        Restart SublimeText3  
+  # GitGutter
+        shows little icons in ST3’s gutter area that
+        indicate whether a line has been inserted,
+        modified, or deleted since the last commit.
+  # Anaconda
+        Autocomplete, linter, etc.
+        %APP_DATA%\Roaming\Sublime Text 3\Packages\Anaconda\Ana..sublime-settings
+	    Line 276 - None
+  # Setup to run python code.
+      Tools > Build System > Python
+      ^+b
+#==========================================================#
