@@ -12,7 +12,6 @@ screen_rect = screen.get_rect()
 clock = pygame.time.Clock()
 
 fps = 20
-FRICTION = 10.0
 GRAVITY = 0.5
 
 
@@ -23,19 +22,19 @@ class Character(object):
         self.reset([screen_width / 2, screen_height / 2])
 
     def move_right(self):
-        # self.vel += np.array([1, 0])
+        self.vel += np.array([1, 0])
         self.accel += np.array([1, 0])
 
     def move_left(self):
-        # self.vel += np.array([-1, 0])
+        self.vel += np.array([-1, 0])
         self.accel += np.array([-1, 0])
 
     def move_up(self):
-        # self.vel += np.array([0, -1])
+        self.vel += np.array([0, -1])
         self.accel += np.array([0, -1])
 
     def move_down(self):
-         #self.vel += np.array([0, 1])
+        self.vel += np.array([0, 1])
         self.accel += np.array([0, 1])
 
     def move(self):
@@ -55,16 +54,16 @@ class Character(object):
             # Bounce off
             self.vel[0] *= -1
             if self.pos[0] <= 0:
-                self.pos[0] = -self.pos[0]
+                self.pos[0] *= -1
             elif self.pos[0] >= screen_width:
-                self.pos[0] = 2*screen_width-self.pos[0]
+                self.pos[0] = 2 * screen_width - self.pos[0]
         # Limit the Y axis
         elif self.pos[1] <= 0 or self.pos[1] >= screen_height:
             self.vel[1] *= -1
             if self.pos[1] <= 0:
-                self.pos[1] = -self.pos[1]
+                self.pos[1] *= -1
             elif self.pos[1] >= screen_height:
-                self.pos[1] = 2*screen_height-self.pos[1]
+                self.pos[1] = 2 * screen_height - self.pos[1]
         # Accel/Velocity if there aren't any limits
         else:
             # Update the velocity & limit
@@ -99,7 +98,7 @@ class Character(object):
     def reset(self, reset_position):
         self.accel = np.array([0.0, 0.0])
         self.vel = np.array([0.0, 0.0])
-        self.pos = np.array([screen_width/2, screen_height/2])
+        self.pos = np.array(reset_position)
         self.size = (10, 10)
 
 
