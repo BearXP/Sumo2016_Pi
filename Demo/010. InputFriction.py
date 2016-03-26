@@ -12,7 +12,7 @@ screen_rect = screen.get_rect()
 clock = pygame.time.Clock()
 
 fps = 20
-FRICTION = 10
+FRICTION = 10.0
 GRAVITY = 0.5
 
 
@@ -23,19 +23,19 @@ class Character(object):
         self.reset([screen_width / 2, screen_height / 2])
 
     def move_right(self):
-        self.vel += np.array([1, 0])
+        # self.vel += np.array([1, 0])
         self.accel += np.array([1, 0])
 
     def move_left(self):
-        self.vel += np.array([-1, 0])
+        # self.vel += np.array([-1, 0])
         self.accel += np.array([-1, 0])
 
     def move_up(self):
-        self.vel += np.array([0, -1])
+        # self.vel += np.array([0, -1])
         self.accel += np.array([0, -1])
 
     def move_down(self):
-        self.vel += np.array([0, 1])
+         #self.vel += np.array([0, 1])
         self.accel += np.array([0, 1])
 
     def move(self):
@@ -54,27 +54,33 @@ class Character(object):
         if self.pos[0] <= 0 or self.pos[0] >= screen_width:
             # Bounce off
             self.vel[0] *= -1
-            self.accel[0] *= -1
             if self.pos[0] <= 0:
-                self.pos[0] = 0
+                self.pos[0] = -self.pos[0]
             elif self.pos[0] >= screen_width:
-                self.pos[0] = screen_width
+                self.pos[0] = 2*screen_width-self.pos[0]
         # Limit the Y axis
         elif self.pos[1] <= 0 or self.pos[1] >= screen_height:
-            self.vel[0] *= -1
-            self.accel[0] *= -1
+            self.vel[1] *= -1
             if self.pos[1] <= 0:
-                self.pos[1] = 0
+                self.pos[1] = -self.pos[1]
             elif self.pos[1] >= screen_height:
-                self.pos[1] = screen_height
+                self.pos[1] = 2*screen_height-self.pos[1]
         # Accel/Velocity if there aren't any limits
         else:
+            # Update the velocity & limit
             self.vel = self.vel + (self.gravity + self.accel)
-            if self.vel.dot(self.vel) < 1e-5:
+            if self.vel.dot(self.vel) < 0.01:
                 self.vel = np.zeros(2)
-            # i.e. drops 10% each update
-            self.accel *= (100 - FRICTION) / 100
-            if self.accel.dot(self.accel) < 1e-5:
+            # Apply friction & limit
+            else:
+                # dynamic friction
+                self.accel = -0.03 * self.vel
+                # static friction
+                if(self.vel[0] > 0):
+                    self.accel[0] -= 0.02
+                if(self.vel[0] < 0):
+                    self.accel[0] += 0.02
+            if self.accel.dot(self.accel) < 0.001:
                 self.accel = np.zeros(2)
 
         # Update position
@@ -88,12 +94,12 @@ class Character(object):
         self.character.clamp_ip(screen_rect)
 
     def display(self):
-        pygame.draw.rect(self.surface, (255, 255, 255), self.character)
+        pygame.draw.rect(self.surface, (0, 255, 255), self.character)
 
     def reset(self, reset_position):
-        self.accel = np.array([0, 0])
+        self.accel = np.array([0.0, 0.0])
         self.vel = np.array([0.0, 0.0])
-        self.pos = np.array(reset_position)
+        self.pos = np.array([screen_width/2, screen_height/2])
         self.size = (10, 10)
 
 
