@@ -1,0 +1,1 @@
+git config --global http.proxy ipv4.203.12.244.3.webdefence.global.blackspider.com:8081
