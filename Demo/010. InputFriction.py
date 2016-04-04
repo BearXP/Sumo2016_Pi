@@ -73,13 +73,10 @@ class Character(object):
             # Apply friction & limit
             else:
                 # dynamic friction
-                self.accel = -0.03 * self.vel
+                self.accel = -0.01 * self.vel
                 # static friction
-                if(self.vel[0] > 0):
-                    self.accel[0] -= 0.02
-                if(self.vel[0] < 0):
-                    self.accel[0] += 0.02
-            if self.accel.dot(self.accel) < 0.001:
+                self.accel += np.sign(self.vel) * -0.003
+            if self.accel.dot(self.accel) < 0.003:
                 self.accel = np.zeros(2)
 
         # Update position

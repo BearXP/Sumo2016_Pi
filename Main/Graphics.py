@@ -28,14 +28,18 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 clock = None
 screen = None
+Width = 0
+Height = 0
 
 
 # ---------------------------------------------------
 # * Object Initialization
 # ---------------------------------------------------
 def init(width, height, fullscreen=False):
-    global screen, clock
+    global screen, clock, Width, Height
     pygame.init()
+    Width = width
+    Height = height
     size = (width, height)
     if fullscreen:
         screen = pygame.display.set_mode(size, pygame.FULLSCREEN)

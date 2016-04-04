@@ -1,1 +1,1 @@
-http://programarcadegames.com/python_examples/en/sprite_sheets/
+# http://programarcadegames.com/python_examples/en/sprite_sheets/
