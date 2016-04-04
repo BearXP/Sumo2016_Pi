@@ -11,7 +11,7 @@ screen_width = 480
 screen_height = 320
 Graphics.init(screen_width, screen_height)
 Input.init()
-map = Sprites.Map.Map(Graphics, 1)
+map = Sprites.Map.Map(Graphics, 0)
 
 
 def main():
@@ -26,10 +26,9 @@ def main():
         map.update()
         Graphics.update()
 
+if __name__ == "__main__":
+    main()
 
 # Close window and exit
 pygame.quit()
 sys.exit()
-
-if __name__ == "__main__":
-    main()
