@@ -4,14 +4,14 @@ import pygame
 
 import Graphics
 import Input
-import Sprites.Map
+import Map
 
 # Initialize the game engine
 screen_width = 480
 screen_height = 320
 Graphics.init(screen_width, screen_height)
 Input.init()
-map = Sprites.Map.Map(Graphics, 0)
+map = Map.Map(Graphics, 1)
 
 
 def main():
