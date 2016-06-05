@@ -4,14 +4,14 @@ import pygame
 
 import Graphics
 import Input
-import Map
+import Sprites.Map
 
 # Initialize the game engine
 screen_width = 480
 screen_height = 320
 Graphics.init(screen_width, screen_height)
 Input.init()
-map = Map.Map(Graphics, 1)
+map = Sprites.Map.Map(Graphics, 1)
 
 def main():
     # Loop until the user clicks the close button.
