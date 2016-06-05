@@ -18,6 +18,7 @@
 # * Libraries
 # ---------------------------------------------------
 import pygame
+import Sprites.Player
 
 
 # ---------------------------------------------------
@@ -47,6 +48,7 @@ class Map(object):
         self.tile_width = graphics.Width / Map.__num_tiles_horiz__
         self.tile_height = graphics.Height / Map.__num_tiles_vert__
         self.size = (self.tile_width, self.tile_height)
+        self.player = Sprites.Player.Player(self.graphics)
 
     # -----------------------------------------------
     # * Display Update
@@ -85,12 +87,12 @@ class Map(object):
                            startline_line_size)
         pygame.draw.rect(self.surface,
                          (185, 122, 87),
-                         rect
-                        )
+                         rect)
         rect = pygame.Rect((int(x * 7 / 6),
                             int(y * 2 / 3)),
                            startline_line_size)
         pygame.draw.rect(self.surface,
                          (185, 122, 87),
-                         rect
-                        )
+                         rect)
+        # Draw the player
+        self.player.update()

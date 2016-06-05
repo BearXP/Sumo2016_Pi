@@ -13,7 +13,6 @@ Graphics.init(screen_width, screen_height)
 Input.init()
 map = Sprites.Map.Map(Graphics, 0)
 
-
 def main():
     # Loop until the user clicks the close button.
     done = False

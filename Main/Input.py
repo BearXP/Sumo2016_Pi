@@ -78,15 +78,23 @@ def update():
             if event.key == pygame.K_ESCAPE:
                 _buttonPressed[Close] = 1
             if event.key == pygame.K_UP:
-                _buttonPressed[Up] += 1
+                _buttonPressed[Up] = 1
+            if event.key == pygame.K_w:
+                _buttonPressed[Up] = 1
             if event.key == pygame.K_DOWN:
-                _buttonPressed[Down] += 1
+                _buttonPressed[Down] = 1
+            if event.key == pygame.K_s:
+                _buttonPressed[Down] = 1
             if event.key == pygame.K_LEFT:
-                _buttonPressed[Left] += 1
+                _buttonPressed[Left] = 1
             if event.key == pygame.K_RIGHT:
-                _buttonPressed[Right] += 1
+                _buttonPressed[Right] = 1
+            if event.key == pygame.K_a:
+                _buttonPressed[Left] = 1
+            if event.key == pygame.K_d:
+                _buttonPressed[Right] = 1
             if event.key == pygame.K_z:
-                _buttonPressed[A] += 1
+                _buttonPressed[A] = 1
             if event.key == pygame.K_x:
                 _buttonPressed[B] = 1
             if event.key == pygame.K_c:
