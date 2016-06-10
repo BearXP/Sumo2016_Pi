@@ -69,38 +69,38 @@ def update():
     # Clear whether the button was pressed
     for i in range(100):
         _buttonPressed[i] = 0
+	# Quit button
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			_buttonPressed[Close] = 1
     # Simple Events (keyboard/Mouse)
-    for event in pygame.event.get():
-        # Quit/Close
-        if event.type == pygame.QUIT:
-            _buttonPressed[Close] = 1
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                _buttonPressed[Close] = 1
-            if event.key == pygame.K_UP:
-                _buttonPressed[Up] = 1
-            if event.key == pygame.K_w:
-                _buttonPressed[Up] = 1
-            if event.key == pygame.K_DOWN:
-                _buttonPressed[Down] = 1
-            if event.key == pygame.K_s:
-                _buttonPressed[Down] = 1
-            if event.key == pygame.K_LEFT:
-                _buttonPressed[Left] = 1
-            if event.key == pygame.K_RIGHT:
-                _buttonPressed[Right] = 1
-            if event.key == pygame.K_a:
-                _buttonPressed[Left] = 1
-            if event.key == pygame.K_d:
-                _buttonPressed[Right] = 1
-            if event.key == pygame.K_z:
-                _buttonPressed[A] = 1
-            if event.key == pygame.K_x:
-                _buttonPressed[B] = 1
-            if event.key == pygame.K_c:
-                _buttonPressed[C] = 1
-            if (event.key == pygame.K_RETURN):
-                _buttonPressed[Start] = 1
+    keys = pygame.key.get_pressed
+    if keys[pygame.K_ESCAPE]:
+        _buttonPressed[Close] = 1
+    if keys[pygame.K_UP]:
+        _buttonPressed[Up] = 1
+    if keys[pygame.K_w]:
+        _buttonPressed[Up] = 1
+    if keys[pygame.K_DOWN]:
+        _buttonPressed[Down] = 1
+    if keys[pygame.K_s]:
+        _buttonPressed[Down] = 1
+    if keys[pygame.K_LEFT]:
+        _buttonPressed[Left] = 1
+    if keys[pygame.K_RIGHT]:
+        _buttonPressed[Right] = 1
+    if keys[pygame.K_a]:
+        _buttonPressed[Left] = 1
+    if keys[pygame.K_d]:
+        _buttonPressed[Right] = 1
+    if keys[pygame.K_z]:
+        _buttonPressed[A] = 1
+    if keys[pygame.K_x]:
+        _buttonPressed[B] = 1
+    if keys[pygame.K_c]:
+        _buttonPressed[C] = 1
+    if (keys[pygame.K_RETURN]):
+        _buttonPressed[Start] = 1
     # Joystick input
     pygame.joystick.init()
     for i in range(_joystickCount):
@@ -116,6 +116,7 @@ def update():
                 _buttonPressed[Left] = 1
             if(joystick.get_axis(1) >= _joystickThreshold):
                 _buttonPressed[Right] = 1
+		keys = joystick.key.get_pressed
     # Increment _holdCount if the button has been pressed
     for i in range(100):
         _holdCount[i] = _holdCount[i] * _buttonPressed[i] + _buttonPressed[i]
